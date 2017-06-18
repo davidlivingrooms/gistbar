@@ -1,0 +1,65 @@
+{
+  "name": "gistbar",
+  "version": "0.0.1",
+  "description": "A gist searcher that lives in your menu bar.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ENV=development electron .",
+    "server": "babel-node server.js",
+    "dev": "concurrently -k 'babel-node server.js' 'npm start'",
+    "build": "electron-packager . Gistbar --platform=darwin --arch=x64 --overwrite --icon=gistbar",
+    "build:linux": "electron-packager . Gistbar --platform=linux --arch=x64 --overwrite --icon=gistbar"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidlivingrooms/gistbar.git"
+  },
+  "keywords": [
+    "gist",
+    "menu",
+    "menubar",
+    "snippet",
+    "developer-tools",
+    "tools",
+    "tooling"
+  ],
+  "author": "David Salas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidlivingrooms/gistbar/issues"
+  },
+  "homepage": "https://github.com/davidlivingrooms/gistbar#readme",
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0",
+      "react"
+    ]
+  },
+  "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "menubar": "^5.2.3"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.0.0",
+    "babel-polyfill": "^6.23.0",
+    "concurrently": "^3.4.0",
+    "css-loader": "^0.28.4",
+    "electron": "^1.6.11",
+    "electron-packager": "^8.7.1",
+    "express": "^4.15.3",
+    "file-loader": "^0.11.2",
+    "postcss-loader": "^2.0.6",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "style-loader": "^0.18.2",
+    "webpack": "^2.6.1",
+    "webpack-dev-middleware": "^1.10.2",
+    "webpack-hot-middleware": "^2.18.0",
+    "webpack-target-electron-renderer": "^0.4.0"
+  }
+}
