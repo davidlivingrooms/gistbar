@@ -1,5 +1,4 @@
 var webpack = require('webpack');
-// var webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
 
 var config = {
   entry: [
@@ -31,7 +30,5 @@ var config = {
     new webpack.HotModuleReplacementPlugin(),
   ]
 };
-
-// config.target = webpackTargetElectronRenderer(config);
 
 module.exports = config;

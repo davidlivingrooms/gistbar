@@ -9,7 +9,8 @@
     "server": "babel-node server.js",
     "dev": "concurrently -k 'babel-node server.js' 'npm start'",
     "build": "electron-packager . Gistbar --platform=darwin --arch=x64 --overwrite --icon=gistbar",
-    "build:linux": "electron-packager . Gistbar --platform=linux --arch=x64 --overwrite --icon=gistbar"
+    "build:linux": "electron-packager . Gistbar --platform=linux --arch=x64 --overwrite --icon=gistbar",
+    "webpack": "./node_modules/webpack/bin/webpack.js  --config=webpack.config.development.js --watch --progress --colors"
   },
   "repository": {
     "type": "git",
