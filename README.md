@@ -1,7 +1,7 @@
 
 
 
-![Build Status](https://travis-ci.org/davidlivingrooms/gistbar.svg?branch=master)
+Build Status - ![Build Status](https://travis-ci.org/davidlivingrooms/gistbar.svg?branch=master)
 
 
 # gistbar
