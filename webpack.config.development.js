@@ -28,7 +28,8 @@ var config = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-  ]
+  ],
+  devtool: "source-map"
 };
 
 module.exports = config;
