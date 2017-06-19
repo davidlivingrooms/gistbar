@@ -11,7 +11,7 @@ branches:
   only:
     - master
 
-script: ./travis-build.sh
+script: npm test
 
 cache:
   directories:
