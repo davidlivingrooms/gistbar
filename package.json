@@ -48,6 +48,7 @@
     "react-tap-event-plugin": "^2.0.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-polyfill": "^6.23.0",
     "chai": "^4.0.2",
@@ -56,12 +57,14 @@
     "css-loader": "^0.28.4",
     "electron": "^1.6.11",
     "electron-packager": "^8.7.1",
+    "enzyme": "^2.8.2",
     "express": "^4.15.3",
     "file-loader": "^0.11.2",
     "mocha": "^3.4.2",
     "postcss-loader": "^2.0.6",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1",
     "spectron": "^3.6.4",
     "style-loader": "^0.18.2",
     "webpack": "^2.6.1",

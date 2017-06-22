@@ -2,7 +2,6 @@ import Spectron from 'spectron'
 import path from 'path'
 import chai from 'chai'
 import chaiAsPromised from 'chai-as-promised'
-import MenuApp from '../src/components/MenuApp.jsx'
 
 let appPath = path.join(__dirname, '..', 'Gistbar-darwin-x64', 'Gistbar.app', 'Contents', 'MacOS', 'Gistbar')
 
