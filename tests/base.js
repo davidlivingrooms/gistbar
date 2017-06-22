@@ -1,7 +1,8 @@
-const Application = require('spectron').Application
-const path = require('path')
-const chai = require('chai')
-const chaiAsPromised = require('chai-as-promised')
+import Spectron from 'spectron'
+import path from 'path'
+import chai from 'chai'
+import chaiAsPromised from 'chai-as-promised'
+import MenuApp from '../src/components/MenuApp.jsx'
 
 let appPath = path.join(__dirname, '..', 'Gistbar-darwin-x64', 'Gistbar.app', 'Contents', 'MacOS', 'Gistbar')
 
@@ -9,7 +10,7 @@ if (process.platform === 'win32') {
   appPath += '.cmd'
 }
 
-const app = new Application({
+const app = new Spectron.Application({
   path: appPath,
 })
 

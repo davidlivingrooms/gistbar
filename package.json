@@ -4,7 +4,7 @@
   "description": "A gist searcher that lives in your menu bar.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha tests/base.js",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register ./tests/**/*.js",
     "start": "ENV=development electron .",
     "server": "babel-node server.js",
     "dev": "concurrently -k 'babel-node server.js' 'npm start'",
