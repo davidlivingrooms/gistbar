@@ -1,5 +1,6 @@
 const { app, ipcMain, globalShortcut, Menu } = require('electron')
 const menubar = require('menubar')
+const {clipboard} = require('electron')
 
 const mb = menubar({
   // dir: path.join(__dirname, '/app'),
@@ -48,3 +49,8 @@ mb.app.on('will-quit', function () {
   globalShortcut.unregisterAll()
 })
 
+ipcMain.on('copy-contents-to-clipboard', (event, gistContent) => {
+  console.log(gistContent)
+  clipboard.writeText(gistContent)
+  // event.sender.send('asynchronous-reply', 'pong')
+})
