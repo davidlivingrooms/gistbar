@@ -50,7 +50,9 @@ mb.app.on('will-quit', function () {
 })
 
 ipcMain.on('copy-contents-to-clipboard', (event, gistContent) => {
-  console.log(gistContent)
   clipboard.writeText(gistContent)
-  // event.sender.send('asynchronous-reply', 'pong')
+})
+
+mb.on('after-show', function () {
+  mb.window.webContents.send('focusSearchBar')
 })

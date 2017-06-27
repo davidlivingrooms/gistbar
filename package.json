@@ -4,7 +4,8 @@
   "description": "A gist searcher that lives in your menu bar.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register ./tests/**/*.js",
+    "test": "./node_modules/.bin/electron-mocha --require ./babel.js --renderer ./tests/renderer/**/*.js",
+    "test:e2e": "./node_modules/.bin/electron-mocha --require ./babel.js ./tests/e2e/**/*.js",
     "debug-tests": "./node_modules/.bin/mocha --inspect --inspect-brk --timeout=0 --watch --compilers js:babel-core/register ./tests/**/*.js",
     "start": "ENV=development electron .",
     "server": "babel-node server.js",
@@ -37,6 +38,9 @@
       "es2015",
       "stage-0",
       "react"
+    ],
+    "plugins": [
+      "transform-decorators-legacy"
     ]
   },
   "dependencies": {
@@ -47,17 +51,21 @@
     "babel-preset-stage-0": "^6.24.1",
     "material-ui": "^0.18.3",
     "menubar": "^5.2.3",
+    "mobx": "^3.1.16",
+    "mobx-react": "^4.2.1",
     "react-tap-event-plugin": "^2.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-loader": "^7.0.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-polyfill": "^6.23.0",
     "chai": "^4.0.2",
     "chai-as-promised": "^7.0.0",
     "concurrently": "^3.4.0",
     "css-loader": "^0.28.4",
     "electron": "^1.6.11",
+    "electron-mocha": "^4.0.0",
     "electron-packager": "^8.7.1",
     "enzyme": "^2.8.2",
     "express": "^4.15.3",

@@ -1,17 +1,30 @@
 import React from 'react'
+import {ipcRenderer} from 'electron'
 import TextField from 'material-ui/TextField'
 import Checkbox from 'material-ui/Checkbox'
+import {observer, inject, Provider} from "mobx-react"
 import GistListContainer from './GistListContainer'
+import Snackbar from 'material-ui/Snackbar'
 
+@inject('rootStore') @observer
 export default class MenuApp extends React.Component {
 
   constructor (props) {
     super(props)
 
+    this.uiStore = props.rootStore.uiStore
+
     this.state = {
       gistFilter: '',
-      searchContents: false
+      isSearchBarFocused: true,
+      searchContents: false,
+      isSnackBarOpen: false,
+      snackBarMessage: '',
     }
+
+    ipcRenderer.on('focusSearchBar', (events, args) => {
+      this.refs.gistFilter.focus()
+    })
   }
 
   onTextFieldChange = (event, newValue) => {
@@ -26,11 +39,16 @@ export default class MenuApp extends React.Component {
     })
   }
 
+  onSnackBarRequestClosed = () => {
+    this.uiStore.isSnackBarOpen = false
+  }
+
   render () {
    return (
      <div>
        <TextField
          onChange={this.onTextFieldChange}
+         ref="gistFilter"
          hintText='Search by label, title, or language'
          fullWidth={true}
        />
@@ -41,6 +59,12 @@ export default class MenuApp extends React.Component {
        <GistListContainer
          gistFilter={this.state.gistFilter}
          searchContents={this.state.searchContents}
+       />
+       <Snackbar
+         open={this.uiStore.isSnackBarOpen}
+         message={this.uiStore.snackBarMessage}
+         onRequestClose={this.onSnackBarRequestClosed}
+         autoHideDuration={2000}
        />
      </div>
    )

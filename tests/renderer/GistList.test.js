@@ -1,11 +1,12 @@
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 import React from 'react'
-import GistList from '../src/components/GistList'
+import GistList from '../../src/components/GistList'
+import RootStore from '../../src/stores/RootStore'
 
 describe('GistList Tests', function () {
   beforeEach(function () {
-
+    this.rootStore = new RootStore()
     this.gists = [
       {
         description: 'This is an example description womp',
@@ -34,27 +35,27 @@ describe('GistList Tests', function () {
   })
 
   it('It can render the GistList', function () {
-    const wrapper = shallow(<GistList gists={this.gists} />)
+    const wrapper = shallow(<GistList.wrappedComponent gists={this.gists} rootStore={this.rootStore}/>)
     expect(wrapper.find('ListItem')).to.have.length(2)
   })
 
   it('It shows all gists when the gistFilter is an empty string', function () {
-    const wrapper = shallow(<GistList gists={this.gists} gistFilter=''/>)
+    const wrapper = shallow(<GistList.wrappedComponent gists={this.gists} rootStore={this.rootStore} gistFilter=''/>)
     expect(wrapper.find('ListItem')).to.have.length(2)
   })
 
   it('It shows all gists when the gistFilter is not passed in', function () {
-    const wrapper = shallow(<GistList gists={this.gists}/>)
+    const wrapper = shallow(<GistList.wrappedComponent gists={this.gists} rootStore={this.rootStore} />)
     expect(wrapper.find('ListItem')).to.have.length(2)
   })
 
   it('It can filter the list based on the gistFilter', function () {
-    const wrapper = shallow(<GistList gists={this.gists} gistFilter='womp'/>)
+    const wrapper = shallow(<GistList.wrappedComponent gists={this.gists} rootStore={this.rootStore} gistFilter='womp'/>)
     expect(wrapper.find('ListItem')).to.have.length(1)
   })
 
   it('It can search the contents of the gists when ', function () {
-    const wrapper = shallow(<GistList gists={this.gists} gistFilter='womp' searchContents={true}/>)
+    const wrapper = shallow(<GistList.wrappedComponent gists={this.gists} rootStore={this.rootStore}  gistFilter='womp' searchContents={true}/>)
     expect(wrapper.find('ListItem')).to.have.length(2)
   })
 

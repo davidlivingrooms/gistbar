@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import MenuApp from './components/MenuApp'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
+import {Provider} from "mobx-react"
+import MenuApp from './components/MenuApp'
+import RootStore from './stores/RootStore'
 
 injectTapEventPlugin() // Needed for material-ui. See https://github.com/callemall/material-ui#react-tap-event-plugin
 
@@ -12,7 +14,11 @@ const App = () => (
   </MuiThemeProvider>
 )
 
+const rootStore = new RootStore();
+
 ReactDOM.render(
-  <App/>,
+  <Provider rootStore={rootStore}>
+    <App/>
+  </Provider>,
   document.getElementById('root')
 )
