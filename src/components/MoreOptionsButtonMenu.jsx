@@ -4,7 +4,6 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import IconButton from 'material-ui/IconButton'
 import MenuItem from 'material-ui/MenuItem'
 import {observer, inject} from "mobx-react";
-import {ipcRenderer} from 'electron'
 
 @inject('rootStore') @observer
 export default class MoreOptionsButtonMenu extends React.Component {

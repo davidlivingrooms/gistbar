@@ -2,11 +2,8 @@ import React from 'react'
 import {inject, observer} from 'mobx-react'
 import Divider from 'material-ui/Divider'
 import GistHeader from './GistHeader'
-
 import CollapsibleGistFile from './CollapsibleGistFile'
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
-import FlatButton from 'material-ui/FlatButton';
-
+import Snackbar from 'material-ui/Snackbar'
 @inject('rootStore') @observer
 export default class GistDetails extends React.Component {
 
@@ -25,12 +22,16 @@ export default class GistDetails extends React.Component {
   }
 
   render () {
-    console.log(this.props.rootStore.gistStore.gist)
-
     return (
       <div>
         <GistHeader />
-        {this.getFileCards(this.props.rootStore.gistStore.gist.files)}
+        {this.getFileCards(this.props.rootStore.gist.files)}
+        <Snackbar
+          open={this.props.rootStore.uiStore.isSnackBarOpen}
+          message={this.props.rootStore.uiStore.snackBarMessage}
+          onRequestClose={this.props.rootStore.uiStore.onSnackBarRequestClosed}
+          autoHideDuration={2000}
+        />
       </div>
     )
   }

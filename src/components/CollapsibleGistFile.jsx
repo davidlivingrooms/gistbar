@@ -29,12 +29,14 @@ export default class CollapsibleGistFile extends React.Component{
     this.setState({expanded: expanded})
   }
 
-  handleCopy = (e) => {
+  handleCopy = (content, e) => {
     e.stopPropagation()
+    this.props.rootStore.copyToClipBoard(content, 'The gist content was copied to the clipboard.')
   }
 
   handleDisplayRaw = (e) => {
     e.stopPropagation()
+    this.props.rootStore.openInDefaultBrowser(this.props.file.raw_url)
   }
 
   getHeaderContent = () => {
@@ -46,7 +48,7 @@ export default class CollapsibleGistFile extends React.Component{
       <div style={inlineBlock}>
         <p style={inlineBlock}>{this.props.fileName}</p>
         <div style={inlineBlock}>
-          <FlatButton onTouchTap={this.handleCopy} label="Copy" primary={true} />
+          <FlatButton onTouchTap={this.handleCopy.bind(this, this.props.file.content)} label="Copy" primary={true} />
           <FlatButton onTouchTap={this.handleDisplayRaw} label="Raw" primary={true} />
         </div>
       </div>

@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import {Provider} from "mobx-react"
 import GistDetails from './components/GistDetails'
-import GistDetailsRootStore from './stores/GistDetailsRootStore'
+import GistDetailsStore from './stores/GistDetailsStore'
 
 injectTapEventPlugin() // Needed for material-ui. See https://github.com/callemall/material-ui#react-tap-event-plugin
 
@@ -14,7 +14,7 @@ const App = () => (
   </MuiThemeProvider>
 )
 
-const rootStore = new GistDetailsRootStore();
+const rootStore = new GistDetailsStore()
 
 ReactDOM.render(
   <Provider rootStore={rootStore}>

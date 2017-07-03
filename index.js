@@ -51,7 +51,7 @@ mb.app.on('will-quit', function () {
   globalShortcut.unregisterAll()
 })
 
-ipcMain.on('copy-contents-to-clipboard', (event, gistContent) => {
+ipcMain.on('copy-to-clipboard', (event, gistContent) => {
   clipboard.writeText(gistContent)
 })
 
@@ -68,9 +68,9 @@ ipcMain.on('view-gist', (event, gist) => {
   }
 
   // Or load a local HTML file
-  detailsWindow.toggleDevTools()
   detailsWindow.loadURL(`file://${__dirname}/src/gistDetails.html`)
 
+  detailsWindow.toggleDevTools()
   //TODO do this as soon as it is possible to send data
   setTimeout(()=> {
     detailsWindow.webContents.send('init-gist', gist)
@@ -79,4 +79,5 @@ ipcMain.on('view-gist', (event, gist) => {
 
 mb.on('after-show', function () {
   mb.window.webContents.send('focusSearchBar')
+  mb.window.toggleDevTools()
 })

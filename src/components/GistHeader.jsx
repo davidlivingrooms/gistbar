@@ -1,7 +1,6 @@
 import React from 'react'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 import {inject, observer} from 'mobx-react'
-import GistDescription from './GistDescription'
 import FlatButton from 'material-ui/FlatButton'
 
 @inject('rootStore') @observer
@@ -17,10 +16,10 @@ export default class GistHeader extends React.Component {
         }}
       >
         <div>
-          <FlatButton onTouchTap={()=>{}} label="Edit" primary={true} />
-          <FlatButton onTouchTap={()=>{}} label="Revisions" primary={true} />
-          <FlatButton onTouchTap={()=>{}} label="Share" primary={true} />
-          <FlatButton onTouchTap={()=>{}} label="Delete" secondary={true} />
+          <FlatButton onTouchTap={this.props.rootStore.editGist} label="Edit" primary={true} />
+          <FlatButton onTouchTap={this.props.rootStore.openInDefaultBrowser.bind(this, this.props.rootStore.gist.html_url + '/revisions')} label="Revisions" primary={true} />
+          <FlatButton onTouchTap={this.props.rootStore.copyToClipBoard.bind(this, this.props.rootStore.gist.html_url, 'The gist share link has been copied to the clipboard.')} label="Share" primary={true} />
+          <FlatButton onTouchTap={this.props.rootStore.openConfirmGistDelete} label="Delete" secondary={true} />
         </div>
       </div>
     )
@@ -31,7 +30,7 @@ export default class GistHeader extends React.Component {
     return (
       <Card expanded={false} style={{marginBottom: 10}}onExpandChange={this.handleExpandChange}>
         <CardHeader
-          title={this.props.rootStore.gistStore.gist.description}
+          title={this.props.rootStore.gist.description}
           children={this.getHeaderContent()}
         />
      </Card>

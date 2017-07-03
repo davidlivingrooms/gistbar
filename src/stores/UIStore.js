@@ -9,4 +9,8 @@ export default class UIStore{
     this.isSnackBarOpen = true
     this.snackBarMessage = message
   }
+
+  onSnackBarRequestClosed = () => {
+    this.isSnackBarOpen = false
+  }
 }

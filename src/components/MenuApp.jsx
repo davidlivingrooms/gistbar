@@ -39,10 +39,6 @@ export default class MenuApp extends React.Component {
     })
   }
 
-  onSnackBarRequestClosed = () => {
-    this.uiStore.isSnackBarOpen = false
-  }
-
   render () {
    return (
      <div>
@@ -63,7 +59,7 @@ export default class MenuApp extends React.Component {
        <Snackbar
          open={this.uiStore.isSnackBarOpen}
          message={this.uiStore.snackBarMessage}
-         onRequestClose={this.onSnackBarRequestClosed}
+         onRequestClose={this.uiStore.onSnackBarRequestClosed}
          autoHideDuration={2000}
        />
      </div>
