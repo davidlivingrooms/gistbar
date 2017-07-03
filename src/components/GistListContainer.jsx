@@ -35,10 +35,7 @@ export default class GistListContainer extends React.Component {
       })
       .then((gistList) => {
         const gists = gistList.map((gistDetails) => {
-          return {
-            description: gistDetails.data.description,
-            files: gistDetails.data.files,
-          }
+          return gistDetails.data
         })
 
         _this.setState({

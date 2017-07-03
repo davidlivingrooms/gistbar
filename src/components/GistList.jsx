@@ -2,7 +2,8 @@ import React from 'react'
 import {List, ListItem} from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import PropTypes from 'prop-types'
-import {observer, inject} from "mobx-react";
+import {observer, inject} from "mobx-react"
+import {ipcRenderer} from 'electron'
 import CopyGistButton from './CopyGistButton'
 
 @inject('rootStore') @observer
@@ -36,6 +37,10 @@ export default class GistList extends React.Component {
     return isTextInGistFiles
   }
 
+  handleListClicked = (gist) => {
+    ipcRenderer.send('view-gist', gist)
+  }
+
   render() {
     return (
       <List>
@@ -56,12 +61,13 @@ export default class GistList extends React.Component {
               }
             })
             .map((gist, index) => {
-              const copyGistButton = (new CopyGistButton({content: Object.values(gist.files)[0].content, rootStore: this.rootStore})).render()
+              const copyGistButton = (new CopyGistButton({gist: gist, rootStore: this.rootStore})).render()
               return (
                 <div key={index}>
                   <ListItem
                     primaryText={gist.description}
                     rightIconButton={copyGistButton}
+                    onTouchTap={this.handleListClicked.bind(this, gist)}
                     secondaryText={
                       <p> {Object.values(gist.files)[0].content} </p> // We only show the first file preview
                     }
