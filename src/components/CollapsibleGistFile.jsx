@@ -5,8 +5,19 @@ import FlatButton from 'material-ui/FlatButton'
 import Paper from 'material-ui/Paper'
 import PropTypes from 'prop-types'
 import CodeMirror from 'react-codemirror'
-
 import 'codemirror/lib/codemirror.css'
+import 'codemirror/mode/javascript/javascript'
+import 'codemirror/mode/xml/xml'
+import 'codemirror/mode/markdown/markdown'
+import 'codemirror/mode/swift/swift'
+import 'codemirror/mode/sql/sql'
+import 'codemirror/mode/ruby/ruby'
+import 'codemirror/mode/python/python'
+import 'codemirror/mode/php/php'
+import 'codemirror/mode/jsx/jsx'
+import 'codemirror/mode/elm/elm'
+import 'codemirror/mode/css/css'
+import 'codemirror/mode/r/r'
 
 @inject('rootStore') @observer
 export default class CollapsibleGistFile extends React.Component{
@@ -55,10 +66,59 @@ export default class CollapsibleGistFile extends React.Component{
     )
   }
 
+  getCodeMirrorModeByFileExtension = (language = 'text') => {
+    let codeMirrorMode
+    switch (language.toLowerCase()) {
+      case 'javascript':
+        codeMirrorMode = 'javascript'
+        break
+      case 'css':
+        codeMirrorMode = 'css'
+        break
+      case 'xml':
+        codeMirrorMode = 'xml'
+        break
+      case 'markdown':
+        codeMirrorMode = 'markdown'
+        break
+      case 'swift':
+        codeMirrorMode = 'swift'
+        break
+      case 'sql':
+        codeMirrorMode = 'sql'
+        break
+      case 'ruby':
+        codeMirrorMode = 'ruby'
+        break
+      case 'python':
+        codeMirrorMode = 'python'
+        break
+      case 'php':
+        codeMirrorMode = 'php'
+        break
+      case 'jsx':
+        codeMirrorMode = 'jsx'
+        break
+      case 'elm':
+        codeMirrorMode = 'elm'
+        break
+      case 'r':
+        codeMirrorMode = 'r'
+        break
+      default:
+        codeMirrorMode = 'text'
+        break
+    }
+
+    return codeMirrorMode
+  }
+
   getGistContent = () => {
-   const options = {
+    const language = this.props.file.language ? this.props.file.language : 'text'
+    const options = {
       lineNumbers: true,
       readOnly: true,
+      mode: this.getCodeMirrorModeByFileExtension(language)
     }
 
     return (

@@ -6,9 +6,11 @@
   "scripts": {
     "test": "./node_modules/.bin/electron-mocha --require ./babel.js --renderer ./tests/renderer/**/*.js & ./node_modules/.bin/electron-mocha --require ./babel.js ./tests/e2e/**/*.js",
     "debug-tests": "./node_modules/.bin/mocha --inspect --inspect-brk --timeout=0 --watch --compilers js:babel-core/register ./tests/**/*.js",
+    "debug-main": "ENV=development electron . --inspect",
     "start": "ENV=development electron .",
     "server": "babel-node server.js",
     "dev": "concurrently -k 'babel-node server.js' 'npm start'",
+    "dev-main": "concurrently -k 'npm run server' 'npm run debug-main'",
     "build": "electron-packager . Gistbar --platform=darwin --arch=x64 --overwrite --icon=gistbar",
     "build:linux": "electron-packager . Gistbar --platform=linux --arch=x64 --overwrite --icon=gistbar",
     "webpack": "./node_modules/webpack/bin/webpack.js  --config=webpack.config.development.js --watch --progress --colors"
@@ -64,7 +66,7 @@
     "chai-as-promised": "^7.0.0",
     "concurrently": "^3.4.0",
     "css-loader": "^0.28.4",
-    "electron": "^1.6.11",
+    "electron": "^1.7.4",
     "electron-mocha": "^4.0.0",
     "electron-packager": "^8.7.1",
     "enzyme": "^2.8.2",

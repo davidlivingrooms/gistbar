@@ -1,5 +1,6 @@
 import {observable} from 'mobx'
 import {ipcRenderer, shell} from 'electron'
+import {apiRequestAuth} from '../utils/requestUtils'
 import UIStore from './UIStore'
 export default class GistDetailsStore {
 
@@ -12,6 +13,11 @@ export default class GistDetailsStore {
       // debugger
       this.gist = gist
       this.isLoading = false
+    })
+
+    ipcRenderer.on('on-github-token-received', (event, accessToken) => {
+      this.accessToken = accessToken
+      // this.isLoggedIn = true
     })
   }
 
@@ -34,5 +40,15 @@ export default class GistDetailsStore {
 
   editGist = () => {
     //TODO after oAuth
+  }
+
+  deleteGist= () => {
+    apiRequestAuth('https://api.github.com/gists/' + this.gist.id, 'delete', this.accessToken)
+      .then((response) => {
+        if (response.statusText === 'No Content') {
+          // close the window
+          ipcRenderer.send('close-details-view-on-delete', this.gist.id)
+        }
+      })
   }
 }
