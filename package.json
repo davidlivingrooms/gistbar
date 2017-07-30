@@ -54,6 +54,8 @@
     "menubar": "^5.2.3",
     "mobx": "^3.1.16",
     "mobx-react": "^4.2.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "react-codemirror": "^1.0.0",
     "react-tap-event-plugin": "^2.0.1"
   },
@@ -74,8 +76,6 @@
     "file-loader": "^0.11.2",
     "mocha": "^3.4.2",
     "postcss-loader": "^2.0.6",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
     "react-test-renderer": "^15.6.1",
     "spectron": "^3.6.4",
     "style-loader": "^0.18.2",
