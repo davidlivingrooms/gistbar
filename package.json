@@ -4,8 +4,8 @@
   "description": "A gist searcher that lives in your menu bar.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/electron-mocha --require ./babel.js --renderer ./tests/renderer/**/*.js && ./node_modules/.bin/electron-mocha --require ./babel.js ./tests/e2e/**/*.js",
-    "debug-tests": "./node_modules/.bin/mocha --inspect --inspect-brk --timeout=0 --watch --compilers js:babel-core/register ./tests/**/*.js",
+    "test": "./node_modules/.bin/electron-mocha --require ./babel.js --renderer ./tests/renderer/**/*.js",
+    "debug-tests": "./node_modules/.bin/electron-mocha --interactive --timeout=0 --watch --compilers js:babel-core/register ./tests/renderer/**/*.js",
     "debug-main": "ENV=development electron . --inspect",
     "start": "ENV=development electron .",
     "server": "babel-node server.js",

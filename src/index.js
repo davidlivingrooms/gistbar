@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import {Provider} from "mobx-react"
-import MenuApp from './components/MenuApp'
-import RootStore from './stores/RootStore'
+import MenuApp from './menuTray/components/MenuApp'
+import RootStore from './menuTray/stores/RootStore'
 
 injectTapEventPlugin() // Needed for material-ui. See https://github.com/callemall/material-ui#react-tap-event-plugin
 

@@ -1,7 +1,7 @@
 import {observable} from 'mobx'
 import {ipcRenderer, shell} from 'electron'
-import {apiRequestAuth} from '../utils/requestUtils'
-import UIStore from './UIStore'
+import {apiRequestAuth} from '../../utils/requestUtils'
+import UIStore from '../../menuTray/stores/UIStore'
 export default class GistDetailsStore {
 
   @observable gist = {}

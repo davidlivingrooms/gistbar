@@ -121,7 +121,7 @@ export default class MenuApp extends React.Component {
 
     const gitHubLoginContents = (
       <div style={contentWrapperStyle}>
-        <img style={imgStyle} src="./src/img/Octocat.jpg"></img>
+        <img style={imgStyle} src="./dist/img/Octocat.jpg"></img>
         <RaisedButton label="GitHub Login" onTouchTap={this.props.rootStore.gistStore.launchGitHubOAuthLogin} primary={true}/>
       </div>
     )

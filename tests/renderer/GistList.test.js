@@ -1,8 +1,8 @@
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 import React from 'react'
-import GistList from '../../src/components/GistList'
-import RootStore from '../../src/stores/RootStore'
+import GistList from '../../src/menuTray/components/GistList'
+import RootStore from '../../src/menuTray/stores/RootStore'
 
 describe('GistList Tests', function () {
   beforeEach(function () {

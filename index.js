@@ -146,7 +146,7 @@ ipcMain.on('view-gist', (event, gist) => {
   }
 
   // Or load a local HTML file
-  detailsWindow.loadURL(`file://${__dirname}/src/gistDetails.html`)
+  detailsWindow.loadURL(`file://${__dirname}/src/gistDetails/gistDetails.html`)
 
 
   detailsWindow.toggleDevTools()

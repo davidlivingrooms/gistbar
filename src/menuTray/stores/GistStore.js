@@ -1,6 +1,6 @@
 import {observable} from 'mobx'
 import {ipcRenderer} from 'electron'
-import {apiRequestAuth} from '../utils/requestUtils'
+import {apiRequestAuth} from '../../utils/requestUtils'
 import axios from 'axios'
 
 export default class GistStore {
@@ -22,6 +22,12 @@ export default class GistStore {
       this.gists = this.gists.filter((gist) => {
         return gist.id !== gistId
       })
+    })
+
+    ipcRenderer.on('focusSearchBar', (events, args) => {
+      if (this.isLoggedIn && this.refs && this.refs.gistFilter) {
+        this.refs.gistFilter.focus()
+      }
     })
   }
 

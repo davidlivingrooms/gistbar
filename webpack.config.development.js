@@ -4,7 +4,7 @@ var config = {
   target: 'electron',
   entry: {
     main: ['webpack-hot-middleware/client?reload=true&path=http://localhost:9000/__webpack_hmr', './src/index'],
-    gistDetails: './src/gistDetails',
+    gistDetails: './src/gistDetails/gistDetails',
   },
   module: {
     loaders: [{

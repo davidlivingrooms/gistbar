@@ -1,12 +1,13 @@
 import { expect } from 'chai'
 import React from 'react'
 import { shallow } from 'enzyme'
-import MenuApp from '../../src/components/MenuApp'
-import RootStore from '../../src/stores/RootStore'
+import MenuApp from '../../src/menuTray/components/MenuApp'
+import RootStore from '../../src/menuTray/stores/RootStore'
 
 describe('MenuApp Tests', function () {
   beforeEach(function () {
     this.rootStore = new RootStore()
+    this.rootStore.gistStore.isLoggedIn = true
   })
 
   afterEach(function () {
